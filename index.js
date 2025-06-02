@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import productRoutes from './src/routes/productRoutes.js';
+import productRoutes from './routes/productRoutes.js';
 import { logger } from './middlewares/logger.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 
