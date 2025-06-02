@@ -27,10 +27,15 @@ export const createProduct = async (req, res, next) => {
     const { error, value } = productSchema.validate(req.body);
     if (error) return res.status(400).json({ error: error.details[0].message });
 
-    // Obtener imagen de API externa
-    const imgRes = await axios.get('https://fakestoreapi.com/products');
-    const random = Math.floor(Math.random() * imgRes.data.length);
-    const imageUrl = imgRes.data[random].image;
+    let imageUrl;
+    try {
+      const imgRes = await axios.get('https://fakestoreapi.com/products');
+      const random = Math.floor(Math.random() * imgRes.data.length);
+      imageUrl = imgRes.data[random].image;
+    } catch (apiError) {
+      console.error('Error al obtener imagen de API externa:', apiError);
+      imageUrl = 'https://via.placeholder.com/150'; // imagen por defecto si falla
+    }
 
     const { name, description, price, stock } = value;
     const result = await pool.query(
@@ -44,6 +49,7 @@ export const createProduct = async (req, res, next) => {
     next(err);
   }
 };
+
 
 export const updateProduct = async (req, res, next) => {
   try {
