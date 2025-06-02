@@ -1,4 +1,4 @@
-import pool from '../db/index.js';
+import pool from '../config/db.js';
 import axios from 'axios';
 import { productSchema } from '../validators/productValidator.js';
 

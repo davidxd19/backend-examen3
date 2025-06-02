@@ -4,6 +4,7 @@ import productRoutes from './routes/productRoutes.js';
 import { logger } from './middlewares/logger.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 
+
 dotenv.config();
 const app = express();
 
