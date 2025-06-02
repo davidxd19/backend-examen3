@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import productRoutes from './routes/productRoutes.js';
+import productRoutes from './src/routes/productRoutes.js';
 import { logger } from './middlewares/logger.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 
@@ -18,4 +18,3 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
-    
